@@ -24,6 +24,10 @@ public class titleScreen extends gameScenes implements ScenesMethod {
         g.drawImage(img, 0, 0, null);
         
     }
+    @Override
+    public  void mouseClicked(int x, int y) {
+
+    }
 
     private void importImg(){
         InputStream is = getClass().getResourceAsStream("../data/gfx/Menu.png");

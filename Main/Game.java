@@ -38,7 +38,7 @@ public class Game extends JFrame implements Runnable {
     }
 
     private void initInput(){
-        myMouseListener = new MyMouseListener();
+        myMouseListener = new MyMouseListener(this);
         addMouseListener(myMouseListener);
         addMouseMotionListener(myMouseListener);
 

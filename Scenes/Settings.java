@@ -18,5 +18,10 @@ public class Settings extends gameScenes implements ScenesMethod {
         g.fillRect(0, 0, 1280, 720);
         
     }
+
+    @Override
+    public void mouseClicked(int x, int y) {
+
+    }
     
 }

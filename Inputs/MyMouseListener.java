@@ -7,6 +7,11 @@ import java.awt.event.*;
 
 
 public class MyMouseListener implements MouseListener, MouseMotionListener {
+    private  Game game;
+
+    public MyMouseListener(Game game) {
+        this.game = game;
+    }
 
     @Override
     public void mouseDragged(MouseEvent e) {
@@ -22,9 +27,17 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
     public void mouseClicked(MouseEvent e) {
         if(e.getButton() == MouseEvent.BUTTON1){
             switch (GameStates.gamestate) {
-
+                case TITLE:
+                    game.getTitleScreen().mouseClicked(e.getX(), e.getY());
+                    break;
+                case PLAYING:
+                    game.getPlaying().mouseClicked(e.getX(), e.getY());
+                case SETTINGS:
+                    game.getSettings().mouseClicked(e.getX(), e.getY());
+                default:
+                    break;
             }
-            System.out.println("Left button clicked");
+
         }
 
     }
