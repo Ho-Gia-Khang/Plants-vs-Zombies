@@ -1,6 +1,10 @@
 package Inputs;
 
+import Main.GameStates;
+import Main.Game;
+
 import java.awt.event.*;
+
 
 public class MyMouseListener implements MouseListener, MouseMotionListener {
 
@@ -17,11 +21,12 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getButton() == MouseEvent.BUTTON1){
+            switch (GameStates.gamestate) {
+
+            }
             System.out.println("Left button clicked");
         }
-        if(e.getButton() == MouseEvent.BUTTON3){
-            System.out.println("Right button clicked");
-        }
+
     }
 
     @Override

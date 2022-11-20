@@ -26,7 +26,7 @@ public class titleScreen extends gameScenes implements ScenesMethod {
     }
 
     private void importImg(){
-        InputStream is = getClass().getResourceAsStream("../data/gfx/mainMenu.png");
+        InputStream is = getClass().getResourceAsStream("../data/gfx/Menu.png");
 
         System.out.println(is);
 
