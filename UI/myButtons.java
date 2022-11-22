@@ -27,7 +27,7 @@ public class myButtons {
     }
 
     private void initBounds() {
-        this.bounds = new Rectangle(x + 35, y + 35, width - 70, height - 70);
+        this.bounds = new Rectangle(x, y, width, height);
     }
 
     public void draw(Graphics g){
