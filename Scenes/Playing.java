@@ -9,7 +9,6 @@ public class Playing extends gameScenes implements ScenesMethod {
 
     public Playing(Game game) {
         super(game);
-        
     }
 
     @Override
