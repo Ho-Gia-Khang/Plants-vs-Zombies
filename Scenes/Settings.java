@@ -78,19 +78,19 @@ public class Settings extends gameScenes implements ScenesMethod {
             GameStates.setGameState(GameStates.TITLE);
         }
         else if(play1Button.getBounds().contains(x, y)){
-
+            GameStates.setGameState(GameStates.PLAYING);
         }
         else if(play2Button.getBounds().contains(x, y)){
-
+            GameStates.setGameState(GameStates.PLAYING);
         }
         else if(play3Button.getBounds().contains(x, y)){
-
+            GameStates.setGameState(GameStates.PLAYING);
         }
         else if(play4Button.getBounds().contains(x, y)){
-
+            GameStates.setGameState(GameStates.PLAYING);
         }
         else if(play5Button.getBounds().contains(x, y)){
-
+            GameStates.setGameState(GameStates.PLAYING);
         }
         
     }
@@ -159,7 +159,7 @@ public class Settings extends gameScenes implements ScenesMethod {
 
     @Override
     public void mouseDragged(int x, int y) {
-        // TODO Auto-generated method stub
+
         
     }
     
