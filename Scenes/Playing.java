@@ -10,18 +10,19 @@ import javax.imageio.ImageIO;
 import Main.Game;
 import Main.GameStates;
 
-import UI.myButtons;
+import UI.*;
 
 
 public class Playing extends gameScenes implements ScenesMethod {
     private BufferedImage level;
-    private myButtons backButton,pea;
+    private myButtons backButton;
+    private playingButtons pea;
 
     public Playing(Game game) {
         super(game);
         loadImg();
 
-        pea = new myButtons(100,100,0, 0,"../data/gfx/peashooterCard.png");
+        pea = new playingButtons(100,100,176, 112,"../data/gfx/peashooterCard.png");
         backButton = new myButtons(970, 10, 308, 135, "../data/gfx/back.png");
     }
 
