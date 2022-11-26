@@ -15,21 +15,40 @@ import UI.*;
 
 public class Playing extends gameScenes implements ScenesMethod {
     private BufferedImage level;
+    private BufferedImage[] img = new BufferedImage[14];
     private myButtons backButton;
-    private playingButtons pea;
+    private playingButtons peaShooterCard, sunFlowerCard, walnutCard, cherryBombCard, repeaterCard, jalapenoCard;
 
     public Playing(Game game) {
         super(game);
         loadImg();
 
-        pea = new playingButtons(100,100,176, 112,"../data/gfx/peashooterCard.png");
+        peaShooterCard = new playingButtons(10,100,176, 112,"../data/gfx/peashooterCard.png");
+        sunFlowerCard = new playingButtons(10, 300, 105, 67, "../data/gfx/sunflowerCard.png");
         backButton = new myButtons(970, 10, 308, 135, "../data/gfx/back.png");
     }
 
     public void loadImg() {
-        InputStream map = getClass().getResourceAsStream("../data/gfx/lawn.png");
         try {
-            level = ImageIO.read(map);
+            level = ImageIO.read(getClass().getResourceAsStream("../data/gfx/lawn.png"));
+            //the plants
+            img[0] = ImageIO.read(getClass().getResourceAsStream("../data/gfx/peashooter.gif"));
+            img[1] = ImageIO.read(getClass().getResourceAsStream("../data/gfx/sunflower.gif"));
+            img[2] = ImageIO.read(getClass().getResourceAsStream("../data/gfx/repeater.gif"));
+            img[3] = ImageIO.read(getClass().getResourceAsStream("../data/gfx/walnut_full_life.gif"));
+            img[4] = ImageIO.read(getClass().getResourceAsStream("../data/gfx/walnut_half_life.gif"));
+            img[5] = ImageIO.read(getClass().getResourceAsStream("../data/gfx/walnut_dying.gif"));
+            img[6] = ImageIO.read(getClass().getResourceAsStream("../data/gfx/powie.gif"));
+            img[7] = ImageIO.read(getClass().getResourceAsStream("../data/gfx/jalapeno.gif"));
+            img[8] = ImageIO.read(getClass().getResourceAsStream("../data/gfx/jalapenoFire.gif"));
+            //the zombies
+            img[9] = ImageIO.read(getClass().getResourceAsStream("../data/gfx/normalzombie.gif"));
+            img[10] = ImageIO.read(getClass().getResourceAsStream("../data/gfx/coneheadzombie.gif"));
+            img[11] = ImageIO.read(getClass().getResourceAsStream("../data/gfx/bucketheadzombie.gif"));
+            img[12] = ImageIO.read(getClass().getResourceAsStream("../data/gfx/burntZombie.gif"));
+            // the mower
+            img[13] = ImageIO.read(getClass().getResourceAsStream("../data/gfx/lawnmowerIdle.gif"));
+            img[14] = ImageIO.read(getClass().getResourceAsStream("../data/gfx/lawnmowerActivated.gif"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -39,7 +58,7 @@ public class Playing extends gameScenes implements ScenesMethod {
     public void render(Graphics g) {
         g.drawImage(level,0,0,null);
         backButton.draw(g);
-        pea.draw(g);
+        peaShooterCard.draw(g);
     }
 
     @Override

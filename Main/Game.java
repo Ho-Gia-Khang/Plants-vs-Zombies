@@ -87,12 +87,12 @@ public class Game extends JFrame implements Runnable {
             }
 
             // display the current status
-            if(System.currentTimeMillis() - lastTimeCheck >= 1000){
-                System.out.println("FPS: " + frames + " | UPS: " + updates);
-                lastTimeCheck = System.currentTimeMillis();
-                frames = 0;
-                updates = 0;
-            }
+//            if(System.currentTimeMillis() - lastTimeCheck >= 1000){
+//                System.out.println("FPS: " + frames + " | UPS: " + updates);
+//                lastTimeCheck = System.currentTimeMillis();
+//                frames = 0;
+//                updates = 0;
+//            }
         }
     }
 
