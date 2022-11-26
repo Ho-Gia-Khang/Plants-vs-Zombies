@@ -11,4 +11,9 @@ public class Repeater extends Plants {
     public void attack() {
 
     }
+
+    @Override
+    public void stop() {
+
+    }
 }

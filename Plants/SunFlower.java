@@ -11,4 +11,9 @@ public class SunFlower extends Plants {
     public void attack() {
 
     }
+
+    @Override
+    public void stop() {
+
+    }
 }

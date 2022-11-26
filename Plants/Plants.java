@@ -31,9 +31,7 @@ public abstract class Plants {
         return health <= 0;
     }
 
-    public void stop(){
-        time.stop();
-    }
+    public abstract void stop();
 
     public int getHealth(){
         return health;
