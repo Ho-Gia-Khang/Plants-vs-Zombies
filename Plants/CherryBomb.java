@@ -3,14 +3,14 @@ package Plants;
 import Main.GameScreen;
 import Scenes.Playing;
 
-public class Jalapeno extends Plants{
-    private int jw = 74, jh = 76;
+public class CherryBomb extends Plants {
+    private int cw=74, ch=76;
     private boolean exploded;
-    private Thread tJalapeno; // waiting time
-    public Jalapeno(GameScreen gameScreen, int x, int y) {
+    private Thread tcherry; // waiting time
+    public CherryBomb(GameScreen gameScreen, int x, int y) {
         super(gameScreen, x, y);
         super.health = 200;
-        tJalapeno = new Thread(new JalapenoWaits());
+        tcherry = new Thread(new CherryWaits());
     }
 
     @Override
@@ -26,36 +26,35 @@ public class Jalapeno extends Plants{
     @Override
     public boolean put(int x, int y, GameScreen gameScreen) {
         if(occ[x][y]==0){ //empty spot
-            occ[x][y] = 6;
-            Playing.plants.add(new Jalapeno(gameScreen, x, y));
+            occ[x][y] = 5;
+            Playing.plants.add(new CherryBomb(gameScreen, x, y));
             return true;
         }else{
             return false;
         }
     }
 
-    private class JalapenoWaits implements Runnable {
+    private class CherryWaits implements Runnable {
         public void run() {
             try{
-                Thread.sleep(800); //Exploded Jalapeno waits for 800 milliseconds
+                Thread.sleep(800); //Exploded cherry waits for 800 milliseconds
             } catch (InterruptedException ignored) {}
         }
     }
 
     private void startTimer(){
-        tJalapeno.start();
+        tcherry.start();
     }
 
     private void enlarge(){
-        jw += 1;
-        jh += 1;
+        cw+=1; ch+=1;
     }
 
     // getters
-    private int getCw(){return jw;}
-    private int getCh(){return jh;}
+    private int getCw(){return cw;}
+    private int getCh(){return ch;}
     private boolean isExploded(){return exploded;}
-    private boolean isTcherryAlive(){return tJalapeno.isAlive();}
+    private boolean isTcherryAlive(){return tcherry.isAlive();}
 
     // setters
     private void setExplode(){
