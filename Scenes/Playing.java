@@ -9,6 +9,20 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
+import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.Shape;
+import java.awt.Rectangle;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.Ellipse2D;
+
+import java.lang.Math;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Iterator;
 
 import Main.Game;
 import Main.GameStates;
@@ -22,11 +36,24 @@ import javax.swing.Timer;
 public class Playing extends gameScenes implements ScenesMethod, ActionListener {
     private BufferedImage level;
     private BufferedImage[] img = new BufferedImage[15];
-    private Timer timer;
+    private Shape[][] field = new Shape[5][9];
+    private Rectangle[] rec = new Rectangle[8]; //rectangle for menu and others
+    private Ellipse2D e_shovel; //ellipse for shovel
+    private Point mouse = new Point(); //point for mouse position
+    private int xp, yp, i, j; //coordinate
+    private float fxp; //coordinate
+    private boolean start=false, play=true, win=false, end_sound=true, sun_clicked=false;
+    private static int wave=0; //zombies wave
+    private Timer timer; //set timer
+    private Toolkit t = Toolkit.getDefaultToolkit();
     private myButtons backButton;
     private playingButtons peaShooterCard, sunFlowerCard, walnutCard, cherryBombCard, repeaterCard, jalapenoCard;
+    private Player player;
+    private Pea pea;
+    private Sun sun;
 
     public static ArrayList<Plants> plants = new ArrayList<>();
+    public static List<Zombies> zombies = new ArrayList<Zombies>();
     public static ArrayList<Sun> suns = new ArrayList<>();
     public static ArrayList<Pea> peas = new ArrayList<>();
 
@@ -48,6 +75,10 @@ public class Playing extends gameScenes implements ScenesMethod, ActionListener 
         //Sun.start();
         //Zombies.start();
         timer.start();
+    }
+
+    public void start(){
+
     }
 
     public void loadImg() {
