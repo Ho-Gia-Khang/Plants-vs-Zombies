@@ -1,5 +1,6 @@
 package Plants;
 
+import Helpz.Audio;
 import Scenes.Playing;
 
 import java.awt.geom.Ellipse2D;
@@ -113,5 +114,16 @@ public class Sun {
 
     public void lower() { //lower sun position
         sunY += 2;
+    }
+    public void points(){ //play points sound
+        try{
+            // create clip reference
+            clip = AudioSystem.getClip();
+            // open audioInputStream to the clip
+            clip.open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Points.wav"))));
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        clip.start();
     }
 }

@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.GraphicsEnvironment;
-import javax.swing.JOptionPane;
 
 public class Player {
     private int sunCredits, temp, choice=0;
@@ -17,12 +16,11 @@ public class Player {
         temp=sunCredits;
         try{
             //create the font to use
-            font=Font.createFont(Font.TRUETYPE_FONT, getClass().getResource("Assets/font/Chalkboard.ttc").openStream()).deriveFont(Font.BOLD, 20f);
+            font=Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("../data/font/Chalkboard.ttc")).deriveFont(Font.BOLD, 20f);
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(font); //register the font
         } catch (Exception ex) {
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Cannot open font!"); //show error dialog
         }
         //font=new Font("Chalkboard", Font.BOLD, 20); //load font
     }
