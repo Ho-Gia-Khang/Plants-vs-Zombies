@@ -40,8 +40,8 @@ public class Plants<T>{
             try{
                 clip = AudioSystem.getClip();
                 clip2 = AudioSystem.getClip();
-                clip.open(AudioSystem.getAudioInputStream(Audio.class.getResource(("Assets/wav/Cherry_enlarge.wav"))));
-                clip2.open(AudioSystem.getAudioInputStream(Audio.class.getResource(("Assets/wav/Cherrybomb.wav"))));
+                clip.open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Cherry_enlarge.wav"))));
+                clip2.open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Cherrybomb.wav"))));
             }catch(Exception ex){
                 ex.printStackTrace();
             }
