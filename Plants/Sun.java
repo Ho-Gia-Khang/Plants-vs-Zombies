@@ -120,7 +120,7 @@ public class Sun {
             // create clip reference
             clip = AudioSystem.getClip();
             // open audioInputStream to the clip
-            clip.open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Points.wav"))));
+            clip.open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Points.wav"))));
         }catch(Exception ex){
             ex.printStackTrace();
         }

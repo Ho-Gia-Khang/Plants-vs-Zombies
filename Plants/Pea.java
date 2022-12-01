@@ -57,7 +57,7 @@ public class Pea{
             // create clip reference
             clip = AudioSystem.getClip();
             // open audioInputStream to the clip
-            clip.open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Splat.wav"))));
+            clip.open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Splat.wav"))));
         }catch(Exception ex){
             ex.printStackTrace();
         }

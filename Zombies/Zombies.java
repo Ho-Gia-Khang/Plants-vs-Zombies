@@ -288,7 +288,7 @@ public class Zombies implements Comparable<Zombies>{
             // create clip reference
             clip = AudioSystem.getClip();
             // open audioInputStream to the clip
-            clip.open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Yuck.wav"))));
+            clip.open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Yuck.wav"))));
         }catch(Exception ex){
             ex.printStackTrace();
         }
@@ -299,7 +299,7 @@ public class Zombies implements Comparable<Zombies>{
             // create clip reference
             clip = AudioSystem.getClip();
             // open audioInputStream to the clip
-            clip.open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Yuck2.wav"))));
+            clip.open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Yuck2.wav"))));
         }catch(Exception ex){
             ex.printStackTrace();
         }

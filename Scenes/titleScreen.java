@@ -7,6 +7,7 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
+import Helpz.Audio;
 import Main.Game;
 import Main.GameStates;
 import UI.myButtons;
@@ -19,8 +20,9 @@ public class titleScreen extends gameScenes implements ScenesMethod {
     public titleScreen(Game game) {
         super(game);
         importImg();
-        startButton = new myButtons(300, 600 , 306, 133, "../data/gfx/startgame.png");
-        quitButton = new myButtons(700, 600, 306, 133, "../data/gfx/exit.png");
+        startButton = new myButtons(225, 500 , 230, 100, "../data/gfx/startgame.png");
+        quitButton = new myButtons(625, 500, 230, 100, "../data/gfx/exit.png");
+        Audio.menu();
  
     }
 

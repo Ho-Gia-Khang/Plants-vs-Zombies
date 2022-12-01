@@ -10,7 +10,7 @@ public class Game extends JFrame implements Runnable {
 
     private Thread gameThread;
 
-    private final static int FPS = 120;
+    private final static int FPS = 60;
     private final static int UPS = 60;
 
     private MyMouseListener myMouseListener;

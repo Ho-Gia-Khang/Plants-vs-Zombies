@@ -17,26 +17,26 @@ public class Audio{
                 clip[i] = AudioSystem.getClip();
             }
             // open audioInputStream to the clip
-            clip[0].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Menu.wav"))));
-            clip[1].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Background.wav"))));
-            clip[2].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Win.wav"))));
-            clip[3].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Lose.wav"))));
-            clip[4].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Zombies_coming.wav"))));
-            clip[5].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Seedlift.wav"))));
-            clip[6].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Plant.wav"))));
-            clip[7].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Eat.wav"))));
-            clip[8].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Buzzer.wav"))));
-            clip[9].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Evillaugh.wav"))));
-            clip[10].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Shovel.wav"))));
-            clip[11].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Remove.wav"))));
-            clip[12].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Wave.wav"))));
-            clip[13].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Siren.wav"))));
-            clip[14].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Groan_brains1.wav"))));
-            clip[15].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Groan_brains2.wav"))));
-            clip[16].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Groan_brains3.wav"))));
-            clip[17].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Groan1.wav"))));
-            clip[18].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Groan2.wav"))));
-            clip[19].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("..data/sfx/Groan3.wav"))));
+            clip[0].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Menu.wav"))));
+            clip[1].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Background.wav"))));
+            clip[2].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Win.wav"))));
+            clip[3].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Lose.wav"))));
+            clip[4].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Zombies_coming.wav"))));
+            clip[5].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Seedlift.wav"))));
+            clip[6].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Plant.wav"))));
+            clip[7].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Eat.wav"))));
+            clip[8].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Buzzer.wav"))));
+            clip[9].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Evillaugh.wav"))));
+            clip[10].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Shovel.wav"))));
+            clip[11].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Remove.wav"))));
+            clip[12].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Wave.wav"))));
+            clip[13].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Siren.wav"))));
+            clip[14].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Groan_brains1.wav"))));
+            clip[15].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Groan_brains2.wav"))));
+            clip[16].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Groan_brains3.wav"))));
+            clip[17].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Groan1.wav"))));
+            clip[18].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Groan2.wav"))));
+            clip[19].open(AudioSystem.getAudioInputStream(Audio.class.getResource(("../data/sfx/Groan3.wav"))));
         }catch(Exception ex)  {
             ex.printStackTrace();
         }
@@ -58,7 +58,7 @@ public class Audio{
     public static void evillaugh(){
         clip[0].stop();
         clip[0]=null;
-        clip[9].start();
+        //clip[9].start();
     }
 
     public static void begin(){

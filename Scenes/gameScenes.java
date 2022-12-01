@@ -4,7 +4,7 @@ import Main.Game;
 
 public class gameScenes {
 
-    private Game game;
+    protected Game game;
 
     public gameScenes(Game game){
         this.game = game;

@@ -7,6 +7,7 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
+import Helpz.Audio;
 import Main.Game;
 import Main.GameStates;
 
@@ -21,13 +22,15 @@ public class Settings extends gameScenes implements ScenesMethod {
     public Settings(Game game) {
         super(game);
         loadImg();
-        backButton = new myButtons(970, 10, 308, 135, "../data/gfx/back.png");
-        play1Button = new myButtons(270, 300, 212, 104, "../data/gfx/playtiny.png");
-        play2Button = new myButtons(470, 300, 212, 104, "../data/gfx/playtiny.png");
-        play3Button = new myButtons(670, 300, 212, 104, "../data/gfx/playtiny.png");
-        play4Button = new myButtons(870, 300, 212, 104, "../data/gfx/playtiny.png");
-        play5Button = new myButtons(270, 595, 212, 104, "../data/gfx/playtiny.png");
-        
+        backButton = new myButtons(750, 0, 231, 101, "../data/gfx/back.png");
+        play1Button = new myButtons(185, 235, 159, 78, "../data/gfx/playtiny.png");
+        play2Button = new myButtons(385, 235, 159, 78, "../data/gfx/playtiny.png");
+        play3Button = new myButtons(585, 235, 159, 78, "../data/gfx/playtiny.png");
+        play4Button = new myButtons(780, 230, 159, 78, "../data/gfx/playtiny.png");
+        play5Button = new myButtons(185, 530, 159, 78, "../data/gfx/playtiny.png");
+
+        //play the menu sound
+        Audio.menu();
     }
 
     private void loadImg() {
@@ -55,11 +58,11 @@ public class Settings extends gameScenes implements ScenesMethod {
         //draw the background
         g.drawImage(levelmenu, 0, 0, null);
         //draw the levels images
-        g.drawImage(lv1,292, 150, null );
-        g.drawImage(lv2,492, 150, null );
-        g.drawImage(lv3,692, 150, null );
-        g.drawImage(lv4,896, 155, null );
-        g.drawImage(lv5,292, 450, null );
+        g.drawImage(lv1,200, 120, null );
+        g.drawImage(lv2,400, 120, null );
+        g.drawImage(lv3,600, 120, null );
+        g.drawImage(lv4,800, 120, null );
+        g.drawImage(lv5,200, 420, null );
         //draw the buttons
         backButton.draw(g);
         play1Button.draw(g);
@@ -67,8 +70,6 @@ public class Settings extends gameScenes implements ScenesMethod {
         play3Button.draw(g);
         play4Button.draw(g);
         play5Button.draw(g);
-
-
 
     }
 
@@ -79,18 +80,33 @@ public class Settings extends gameScenes implements ScenesMethod {
         }
         else if(play1Button.getBounds().contains(x, y)){
             GameStates.setGameState(GameStates.PLAYING);
+            Audio.evillaugh();
+            Audio.begin();
+            Playing.start = true;
         }
         else if(play2Button.getBounds().contains(x, y)){
             GameStates.setGameState(GameStates.PLAYING);
+            Audio.evillaugh();
+            Audio.begin();
+            Playing.start = true;
         }
         else if(play3Button.getBounds().contains(x, y)){
             GameStates.setGameState(GameStates.PLAYING);
+            Audio.evillaugh();
+            Audio.begin();
+            Playing.start = true;
         }
         else if(play4Button.getBounds().contains(x, y)){
             GameStates.setGameState(GameStates.PLAYING);
+            Audio.evillaugh();
+            Audio.begin();
+            Playing.start = true;
         }
         else if(play5Button.getBounds().contains(x, y)){
             GameStates.setGameState(GameStates.PLAYING);
+            Audio.evillaugh();
+            Audio.begin();
+            Playing.start = true;
         }
         
     }
@@ -160,7 +176,6 @@ public class Settings extends gameScenes implements ScenesMethod {
     @Override
     public void mouseDragged(int x, int y) {
 
-        
     }
     
 }

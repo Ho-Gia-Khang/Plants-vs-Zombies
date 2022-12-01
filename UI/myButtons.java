@@ -40,16 +40,16 @@ public class myButtons {
 
     private void drawBorder(Graphics g) {
         g.setColor(Color.BLACK);
-        g.drawRect(x + 35, y + 35, width - 70, height - 70);
+        g.drawRect(x + 27, y + 27, width - 53, height - 53);
         if(mouseOver){
-            g.drawRect(x + 35, y + 35, width - 69, height - 69);
-            g.drawRect(x + 35, y + 35, width - 68, height - 68);
+            g.drawRect(x + 27, y + 27, width - 52, height - 52);
+            g.drawRect(x + 27, y + 27, width - 51, height - 51);
         }
         if(mousePressed){
-            g.drawRect(x + 35, y + 35, width - 69, height - 69);
-            g.drawRect(x + 35, y + 35, width - 68, height - 68);
-            g.drawRect(x + 35, y + 35, width - 67, height - 67);
-            g.drawRect(x + 35, y + 35, width - 66, height - 66);
+            g.drawRect(x + 27, y + 27, width - 52, height - 52);
+            g.drawRect(x + 27, y + 27, width - 51, height - 51);
+            g.drawRect(x + 27, y + 27, width - 50, height - 50);
+            g.drawRect(x + 27, y + 27, width - 49, height - 49);
         }
     }
 

@@ -45,9 +45,10 @@ public class Playing extends gameScenes implements ScenesMethod, ActionListener 
     private Rectangle[] rec = new Rectangle[8]; //rectangle for menu and others
     private Ellipse2D e_shovel; //ellipse for shovel
     private Point mouse = new Point(); //point for mouse position
-    private int xp, yp, i, j; //coordinate
+    private int xp, yp, i, j, mouse_x, mouse_y; //coordinate
     private float fxp; //coordinate
-    private boolean start=false, play=true, win=false, end_sound=true, sun_clicked=false;
+    private boolean play=true, win=false, end_sound=true, sun_clicked=false;
+    public static boolean start = false;
     private static int wave=0; //zombies wave
     private Timer timer; //set timer
     private Toolkit t = Toolkit.getDefaultToolkit();
@@ -69,17 +70,8 @@ public class Playing extends gameScenes implements ScenesMethod, ActionListener 
         super(game);
         timer = new Timer(25, this);
 
-        //the plant cards
-        peaShooterCard = new playingButtons(10,10,157, 100,"../data/gfx/peashooterCard.png");
-        sunFlowerCard = new playingButtons(10, 120, 157, 100, "../data/gfx/sunflowerCard.png");
-        walnutCard = new playingButtons(10, 230, 157, 100, "../data/gfx/wallnutCard.png");
-        cherryBombCard = new playingButtons(10, 340, 157, 100, "../data/gfx/cherryBombCard.png");
-        repeaterCard = new playingButtons(10, 450, 157, 100, "../data/gfx/repeaterCard.png");
-        jalapenoCard = new playingButtons(10, 560, 157, 100, "../data/gfx/jalapenoCard.png");
-
-        backButton = new myButtons(970, 10, 308, 135, "../data/gfx/back.png");
-
         timer.start();
+        start();
     }
 
     public void start(){
@@ -90,23 +82,26 @@ public class Playing extends gameScenes implements ScenesMethod, ActionListener 
         loadImg();
         init();
 
-        Audio.begin();
         timer.start();
     }
 
     @Override
     public void render(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
-        g.drawImage(level,0,0,null);
-        backButton.draw(g);
-        // draw the plant cards
-        peaShooterCard.draw(g);
-        sunFlowerCard.draw(g);
-        walnutCard.draw(g);
-        cherryBombCard.draw(g);
-        repeaterCard.draw(g);
-        jalapenoCard.draw(g);
+        //draw background
+        g.drawImage(img[0], 0, 0, 1024, 625, null);
 
+        //draw progress
+        xp = Math.round((205.0f/Zombies.getMax())*Zombies.getN());
+        yp = Math.round((190.0f/Zombies.getMax())*Zombies.getN());
+        g.drawImage(img[27], 498+205-xp, 588, xp, 16, null); //draw greenbar (max 205 pixels)
+        g.drawImage(img[26], 490, 572, 215, 40, null); //draw bar
+        if(Zombies.getN() <= Zombies.getMax()-5){
+            g.drawImage(img[25], 489, 564, 261, 49, null); //draw flag
+        }else{ //raise flag for the last 5 zombies
+            g.drawImage(img[25], 489, 552+Math.round((12.0f/5)*(Zombies.getMax()-Zombies.getN())), 261, 49, null);
+        }
+        g.drawImage(img[24], 675-yp, 574, 35, 38, null); //draw zombie head (485 to 675; max 190 pixels)
 
         //draw plant
         Iterator<Plants<Integer>> itpl = plants.iterator();
@@ -309,23 +304,23 @@ public class Playing extends gameScenes implements ScenesMethod, ActionListener 
         //draw transparent plant following mouse position
         if(player.getChoice()==1){ //sunflower
             g2.setComposite(AlphaComposite.SrcOver.derive(0.7f)); //set alpha to 0.7
-            g2.drawImage(img[2], mouse.getX()-swidth/2, mouse.getY()-sheight/2, swidth, sheight, null);
+            g2.drawImage(img[2], mouse_x - swidth/2, mouse_y - sheight/2, swidth, sheight, null);
             g2.setComposite(AlphaComposite.SrcOver.derive(1f)); //set alpha back to 1
         }else if(player.getChoice()==2){ //peashooter
             g2.setComposite(AlphaComposite.SrcOver.derive(0.7f));
-            g2.drawImage(img[3], mouse.getX()-pwidth/2+1, mouse.getY()-pheight/2, pwidth+2, pheight, null);
+            g2.drawImage(img[3], mouse_x - pwidth/2+1, mouse_y - pheight/2, pwidth+2, pheight, null);
             g2.setComposite(AlphaComposite.SrcOver.derive(1f));
         }else if(player.getChoice()==3){ //repeater
             g2.setComposite(AlphaComposite.SrcOver.derive(0.7f));
-            g2.drawImage(img[4], mouse.getX()-rwidth/2+2, mouse.getY()-rheight/2+2, rwidth+2, rheight+2, null);
+            g2.drawImage(img[4], mouse_x - rwidth/2+2, mouse_y - rheight/2+2, rwidth+2, rheight+2, null);
             g2.setComposite(AlphaComposite.SrcOver.derive(1f));
         }else if(player.getChoice()==4){ //wallnut
             g2.setComposite(AlphaComposite.SrcOver.derive(0.7f));
-            g2.drawImage(img[35], mouse.getX()-32, mouse.getY()-36, 61, 69, null);
+            g2.drawImage(img[35], mouse_x - 32, mouse_y - 36, 61, 69, null);
             g2.setComposite(AlphaComposite.SrcOver.derive(1f));
         }else if(player.getChoice()==5){ //cherrybomb
             g2.setComposite(AlphaComposite.SrcOver.derive(0.7f));
-            g2.drawImage(img[30], mouse.getX()-37, mouse.getY()-38, 74, 76, null);
+            g2.drawImage(img[30], mouse_x - 37, mouse_y - 38, 74, 76, null);
             g2.setComposite(AlphaComposite.SrcOver.derive(1f));
         }
 
@@ -433,53 +428,20 @@ public class Playing extends gameScenes implements ScenesMethod, ActionListener 
 
     @Override
     public void mouseClicked(int x, int y) {
-        if(backButton.getBounds().contains(x, y)){
-            GameStates.setGameState(GameStates.SETTINGS);
-        }
         
     }
 
     @Override
     public void mouseMoved(int x, int y) {
-        backButton.setMouseOver(false);
-        peaShooterCard.setMouseOver(false);
-        sunFlowerCard.setMouseOver(false);
-        walnutCard.setMouseOver(false);
-        cherryBombCard.setMouseOver(false);
-        repeaterCard.setMouseOver(false);
-        jalapenoCard.setMouseOver(false);
-
-        if(backButton.getBounds().contains(x, y)){
-            backButton.setMouseOver(true);
-        }
-        else if(peaShooterCard.getBounds().contains(x, y)){
-            peaShooterCard.setMouseOver(true);
-        }
-        else if(sunFlowerCard.getBounds().contains(x, y)){
-            sunFlowerCard.setMouseOver(true);
-        }
-        else if(walnutCard.getBounds().contains(x, y)){
-            walnutCard.setMouseOver(true);
-        }
-        else if(cherryBombCard.getBounds().contains(x, y)){
-            cherryBombCard.setMouseOver(true);
-        }
-        else if(repeaterCard.getBounds().contains(x, y)){
-            repeaterCard.setMouseOver(true);
-        }
-        else if(jalapenoCard.getBounds().contains(x, y)){
-            jalapenoCard.setMouseOver(true);
-        }
+        mouse_x = x;
+        mouse_y = y;
     }
 
     @Override
     public void mousePressed(int x, int y) {
-        if(backButton.getBounds().contains(x, y)){
-            backButton.setMousePressed(true);
-        }
         if(play){ //the game is playing
             Iterator<Sun> its = suns.iterator();
-            A: while (its.hasNext()){
+            while (its.hasNext()){
                 sun=its.next();
                 try{
                     if(sun.getE().contains(x, y)){ //click falling sun
@@ -487,7 +449,7 @@ public class Playing extends gameScenes implements ScenesMethod, ActionListener 
                         player.addSunCredits(); //add 25 sun points;
                         sun_clicked=true;
                         its.remove();
-                        break A;
+                        break;
                     }
                 }catch(Exception ex){}
             }
@@ -613,12 +575,12 @@ public class Playing extends gameScenes implements ScenesMethod, ActionListener 
 
     @Override
     public void mouseReleased(int x, int y) {
-        backButton.setMousePressed(false);
         
     }
 
     @Override
     public void mouseDragged(int x, int y) {
+
     }
 
     @Override
