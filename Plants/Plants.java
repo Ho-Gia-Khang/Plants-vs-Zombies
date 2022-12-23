@@ -10,27 +10,26 @@ import Scenes.Playing;
 import UI.Point;
 import Helpz.Audio;
 
-public class Plants<T>{
-    private T type;
+public class Plants{
+    protected int type;
     protected int health;
-    private boolean idle=true, threaten=false, exploded=false;
+    protected boolean idle=true, threaten=false, exploded=false;
     private Timer timer, timer2, timer3; //set timer
-    private int x, y; //array for plant location [5][9]
+    protected int x, y; //array for plant location [5][9]
     private int cw=74, ch=76; //cherrybomb
     private static int[][] occ = new int[5][10];
     private static Point[][] coor = new Point[5][9]; //array for plants coordinate
     private Clip clip, clip2;
     private Thread tcherry; //thread for waiting time
 
-    public Plants(T type, int x, int y){
+    public Plants(int type, int x, int y){
         this.type=type;
         this.x=x;
         this.y=y;
         if(type.equals(1)){ //Sunflower
             health = 60;
-        }else if(type.equals(2)){ //Peashooter
-            health = 100;
-        }else if(type.equals(3)){ //Repeater
+        }
+        else if(type.equals(3)){ //Repeater
             health = 100;
         }else if(type.equals(4)){ //Wallnut
             health = 1000;
@@ -50,13 +49,6 @@ public class Plants<T>{
 
     //initialization block
     {
-        //shoot pea every 2 seconds
-        timer=new Timer(2000, new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                Playing.peas.add(new Pea((int)type, x, y));
-            }
-        });
-
         //repeater shoots second pea every 2.2 seconds
         timer2=new Timer(2000, new ActionListener(){
             public void actionPerformed(ActionEvent e) {
@@ -76,7 +68,7 @@ public class Plants<T>{
     //getter
     public int getX(){return x;}
     public int getY(){return y;}
-    public T getType(){return type;}
+    public int getType(){return type;}
     public int getHealth(){return health;}
     public boolean isThreaten(){return threaten;}
     public static int getOcc(int x, int y){return occ[x][y];}
@@ -94,10 +86,10 @@ public class Plants<T>{
         threaten=threat;
     }
 
-    public boolean put(int x, int y, T type){
+    public boolean put(int x, int y, int type){
         if(occ[x][y]==0){ //empty spot
             occ[x][y]=(int)type;
-            Playing.plants.add(new Plants<Integer>((int)type, x, y));
+            Playing.plants.add(new Plants(type, x, y));
             return true;
         }else{
             return false;
@@ -105,7 +97,7 @@ public class Plants<T>{
     }
     public void attack(){
         timer.start();
-        if(type.equals(3)){ //repeater
+        if(getType() == 3){ //repeater
             timer2.start();
         }
         idle=false;
