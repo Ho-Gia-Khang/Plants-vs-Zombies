@@ -14,7 +14,7 @@ public class Plants{
     protected int type;
     protected int health;
     protected boolean idle=true, threaten=false, exploded=false;
-    private Timer timer, timer2, timer3; //set timer
+    protected Timer timer, timer2, timer3; //set timer
     protected int x, y; //array for plant location [5][9]
     private int cw=74, ch=76; //cherrybomb
     private static int[][] occ = new int[5][10];
@@ -26,12 +26,7 @@ public class Plants{
         this.type=type;
         this.x=x;
         this.y=y;
-        if(type.equals(1)){ //Sunflower
-            health = 60;
-        }
-        else if(type.equals(3)){ //Repeater
-            health = 100;
-        }else if(type.equals(4)){ //Wallnut
+        if(type.equals(4)){ //Wallnut
             health = 1000;
         }else if(type.equals(5)){ //Cherrybomb
             health = 200;
@@ -45,24 +40,6 @@ public class Plants{
                 ex.printStackTrace();
             }
         }else{}
-    }
-
-    //initialization block
-    {
-        //repeater shoots second pea every 2.2 seconds
-        timer2=new Timer(2000, new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                Playing.peas.add(new Pea(3, x, y));
-            }
-        });
-        timer2.setInitialDelay(2200);
-
-        //drop sun every 10 seconds
-        timer3=new Timer(10000, new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                Playing.suns.add(new Sun(x, y));
-            }
-        });
     }
 
     //getter
