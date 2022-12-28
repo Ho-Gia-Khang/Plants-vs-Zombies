@@ -298,7 +298,7 @@ public class Playing extends gameScenes implements ScenesMethod, ActionListener 
         }else{ //if shovel is taken
             g.drawImage(img[23], 171, 548, 70, 70, null);
             //draw shovel following mouse position
-            g.drawImage(img[21], mouse.getX(), mouse.getY()-70, 68, 70, null);
+            g.drawImage(img[21], mouse_x - 20, mouse_y - 70, 68, 70, null);
         }
 
         //draw transparent plant following mouse position
