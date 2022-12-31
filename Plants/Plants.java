@@ -160,5 +160,3 @@ public class Plants<T>{
         clip2.start();
     }
 }
-
-
